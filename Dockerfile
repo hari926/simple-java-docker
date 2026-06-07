@@ -1,9 +1,14 @@
+# Base Java image
 FROM eclipse-temurin:17-jdk
 
+# Working directory
 WORKDIR /app
 
-COPY target/springboot-app.jar app.jar
+# Copy source code
+COPY src/Main.java /app/Main.java
 
-EXPOSE 8080
+# Compile Java
+RUN javac Main.java
 
-ENTRYPOINT ["java","-jar","app.jar"]
+# Run application
+CMD ["java", "Main"]
